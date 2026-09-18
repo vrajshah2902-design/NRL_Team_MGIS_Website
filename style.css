@@ -1,0 +1,25 @@
+/* 1. Define the appear and slide-up animation */
+@keyframes revealOnScroll {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 2. Apply it to your target elements */
+.animate-on-scroll {
+  /* Attach the keyframe animation */
+  animation: revealOnScroll linear both;
+
+  /* Link the animation progress to the element entering the viewport */
+  animation-timeline: view();
+
+  /* Control when the animation starts and finishes */
+  /* Starts when the top of the element enters the bottom of the viewport */
+  /* Ends when the element covers 40% of the viewport */
+  animation-range: entry 0% cover 40%;
+}
