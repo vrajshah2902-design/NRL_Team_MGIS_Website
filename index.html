@@ -1,11 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Team MGIS</title>
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team MGIS | NRL Robotics Competition</title>
+  <meta name="description" content="Official website of Team MGIS - National Robotics League (NRL) Combat Robotics Engineering Team.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@400;600;700;800;900&family=Tiny5&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Background Animated Cyber Grid & Canvas -->
+  <div class="tech-canvas-background">
+    <canvas id="tech-particles"></canvas>
+    <div class="tech-grid-overlay"></div>
+    <div class="tech-glow tech-glow-top"></div>
+    <div class="tech-glow tech-glow-bottom"></div>
+  </div>
+
+  <!-- Sticky Header that adapts smoothly to scroll direction -->
+  <header id="main-header" class="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" aria-label="Team MGIS Home">
+        <div class="logo-symbol">
+          <span class="symbol-bracket">[</span>
+          <span class="symbol-core">MGIS</span>
+          <span class="symbol-bracket">]</span>
+        </div>
+        <div class="logo-meta">
+          <span class="logo-title">TEAM MGIS</span>
+          <span class="logo-sub">NRL COMBAT ROBOTICS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#who-we-are" class="nav-link"><span class="nav-num">01.</span> Who We Are</a></li>
+          <li><a href="#about-robot" class="nav-link"><span class="nav-num">02.</span> The Robot</a></li>
+          <li><a href="#specs" class="nav-link"><span class="nav-num">03.</span> Telemetry</a></li>
+          <li><a href="#meet-team" class="nav-link"><span class="nav-num">04.</span> Team & Mentor</a></li>
+        </ul>
+      </nav>
+
+      <!-- Status Indicator & CTA -->
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span class="status-text">SYS: ONLINE</span>
+        </div>
+        <a href="#about-robot" class="btn btn-sm btn-primary">Inspect Bot</a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-list">
+        <li><a href="#who-we-are" class="mobile-nav-link">01. Who We Are</a></li>
+        <li><a href="#about-robot" class="mobile-nav-link">02. The Robot</a></li>
+        <li><a href="#specs" class="mobile-nav-link">03. Telemetry & Specs</a></li>
+        <li><a href="#meet-team" class="mobile-nav-link">04. Meet The Team</a></li>
+        <li><a href="#about-robot" class="btn btn-primary btn-block">Inspect Robot</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="main-content" class="page-wrapper">
+
+    <!-- HERO / WHO WE ARE SECTION -->
+    <section id="who-we-are" class="section hero-section" data-section="who-we-are">
+      <div class="container hero-container">
+        
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_01]</span>
+          <span class="tag-title">IDENTITY & MISSION</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <h1 class="glitch-heading" data-text="TEAM MGIS">TEAM MGIS</h1>
+            <p class="hero-kicker">ENGINEERING PRECISION. MAXIMUM IMPACT.</p>
+            <p class="hero-description">
+              We are Team MGIS, a dedicated collective of robotics engineers and designers competing in the 
+              National Robotics League (NRL). Combining aerospace-grade alloy machining, high-torque brushless drive systems, 
+              and proprietary power telemetry, we engineer competitive combat machines built to dominate the arena.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#about-robot" class="btn btn-primary">
+                <span>Explore Robot Specs</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#meet-team" class="btn btn-outline">
+                <span>Meet Crew</span>
+              </a>
+            </div>
+
+            <!-- Quick Telemetry Counters -->
+            <div class="hero-stats-grid">
+              <div class="stat-card">
+                <div class="stat-value" data-target="15">0</div>
+                <div class="stat-label">LBS COMBAT CLASS</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" data-target="12000">0</div>
+                <div class="stat-label">WEAPON RPM</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" data-target="8.4" data-decimals="1">0</div>
+                <div class="stat-label">KJ KINETIC IMPACT</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" data-target="100">0</div>
+                <div class="stat-label">% IN-HOUSE CAD/CAM</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero HUD / Interactive Visual Card -->
+          <div class="hero-visual reveal">
+            <div class="hud-panel">
+              <div class="hud-corner hud-top-left"></div>
+              <div class="hud-corner hud-top-right"></div>
+              <div class="hud-corner hud-bottom-left"></div>
+              <div class="hud-corner hud-bottom-right"></div>
+              
+              <div class="hud-header">
+                <div class="hud-title-wrap">
+                  <span class="hud-indicator pulse"></span>
+                  <span class="hud-title">NRL ARENA TELEMETRY v4.2</span>
+                </div>
+                <span class="hud-code">LOC // NRL-DIVISION-A</span>
+              </div>
+
+              <div class="hud-body">
+                <div class="radar-circle-wrap">
+                  <div class="radar-scan"></div>
+                  <div class="radar-grid"></div>
+                  <div class="radar-center-blip"></div>
+                  <div class="radar-target-1"></div>
+                  <div class="radar-target-2"></div>
+                </div>
+
+                <div class="hud-terminal-log">
+                  <p class="log-line text-dim">&gt; INIT MGIS_CORE_KERNEL... [OK]</p>
+                  <p class="log-line text-blue">&gt; ESC TELEMETRY: 4S LIPO 16.8V NOMINAL</p>
+                  <p class="log-line text-blue">&gt; GYRO COMPENSATOR: CALIBRATED</p>
+                  <p class="log-line text-highlight">&gt; READY FOR COMBAT ARENA ENGAGEMENT</p>
+                </div>
+              </div>
+
+              <div class="hud-footer">
+                <span class="hud-footer-item">CORE TEMP: 31.4°C</span>
+                <span class="hud-footer-item">LINK: 2.4GHz 99.8%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-cue">
+          <span class="scroll-cue-text">SCROLL TO INSPECT ROBOT</span>
+          <div class="scroll-cue-chevron">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT OUR ROBOT SECTION -->
+    <section id="about-robot" class="section robot-section" data-section="about-robot">
+      <div class="container">
+        
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_02]</span>
+          <span class="tag-title">SYSTEM BLUEPRINT & SCHEMATICS</span>
+        </div>
+
+        <div class="section-heading-wrap reveal">
+          <h2 class="section-title">ABOUT OUR ROBOT</h2>
+          <p class="section-subtitle">
+            Engineered from ground-up to withstand catastrophic kinetic transfer while delivering devastating spinning kinetic strikes.
+          </p>
+        </div>
+
+        <!-- Robot Photo & Interactive Blueprint HUD -->
+        <div class="robot-showcase-grid">
+          
+          <div class="robot-blueprint-frame reveal">
+            <div class="hud-corner hud-top-left"></div>
+            <div class="hud-corner hud-top-right"></div>
+            <div class="hud-corner hud-bottom-left"></div>
+            <div class="hud-corner hud-bottom-right"></div>
+            
+            <div class="laser-scanner" aria-hidden="true"></div>
+            
+            <div class="blueprint-overlay">
+              <span class="blueprint-badge">MGIS-MK.IV ASSET SCHEMATIC</span>
+              <span class="blueprint-coords">X: 142.5mm | Y: 210.0mm | Z: 95.0mm</span>
+            </div>
+
+            <!-- Target Crosshairs -->
+            <div class="hud-crosshair crosshair-1" data-label="Asymmetric Beater Disc"></div>
+            <div class="hud-crosshair crosshair-2" data-label="Hardox 500 Armor Wedge"></div>
+            <div class="hud-crosshair crosshair-3" data-label="Brushless Planetary Drive"></div>
+
+            <div class="robot-image-container">
+              <img 
+                src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                alt="Team MGIS NRL Robot Schematic" 
+                class="robot-main-image"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="blueprint-footer">
+              <div class="schematic-pill">CHASSIS: BILLET 7075-T6</div>
+              <div class="schematic-pill">WEAPON: S7 TOOL STEEL</div>
+              <div class="schematic-pill">DRIVE: DUAL FOC ESC</div>
+            </div>
+          </div>
+
+          <!-- Robot Technical Breakdown & Specs -->
+          <div class="robot-details-wrap reveal">
+            
+            <!-- Tab Navigation for Systems -->
+            <div class="tech-tab-bar" role="tablist">
+              <button class="tech-tab-btn active" data-tab="weapon" role="tab" aria-selected="true">WEAPON</button>
+              <button class="tech-tab-btn" data-tab="chassis" role="tab" aria-selected="false">CHASSIS & ARMOR</button>
+              <button class="tech-tab-btn" data-tab="drivetrain" role="tab" aria-selected="false">DRIVETRAIN</button>
+              <button class="tech-tab-btn" data-tab="avionics" role="tab" aria-selected="false">AVIONICS</button>
+            </div>
+
+            <!-- Tab 1: Weapon -->
+            <div class="tab-pane active" id="tab-weapon" role="tabpanel">
+              <div class="spec-header">
+                <h3 class="spec-title">Asymmetric Kinetic Disc</h3>
+                <span class="spec-code">SUB-SYS // WPN-01</span>
+              </div>
+              <p class="spec-desc">
+                Machined from heat-treated S7 shock-resistant tool steel. Optimized via FEA simulation for maximum moment of inertia and instantaneous energy transfer upon contact.
+              </p>
+              <div class="spec-metrics-list">
+                <div class="metric-row">
+                  <span class="metric-name">Spin Velocity</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 92%;"></div>
+                  </div>
+                  <span class="metric-num">12,000 RPM</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Tip Speed</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 88%;"></div>
+                  </div>
+                  <span class="metric-num">240 MPH</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Spin-Up Latency</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 95%;"></div>
+                  </div>
+                  <span class="metric-num">1.4 SEC</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Chassis -->
+            <div class="tab-pane" id="tab-chassis" role="tabpanel">
+              <div class="spec-header">
+                <h3 class="spec-title">Monocoque Unibody Frame</h3>
+                <span class="spec-code">SUB-SYS // CHS-02</span>
+              </div>
+              <p class="spec-desc">
+                CNC-machined from a solid billet of aerospace grade 7075-T6 aluminum with laser-cut Hardox 500 front leading wedge plates to deflect opposing spinner hits and control arena positioning.
+              </p>
+              <div class="spec-metrics-list">
+                <div class="metric-row">
+                  <span class="metric-name">Armor Hardness</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 94%;"></div>
+                  </div>
+                  <span class="metric-num">500 HBW</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Yield Strength</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 89%;"></div>
+                  </div>
+                  <span class="metric-num">503 MPa</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Weight Distribution</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 85%;"></div>
+                  </div>
+                  <span class="metric-num">48% F / 52% R</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Drivetrain -->
+            <div class="tab-pane" id="tab-drivetrain" role="tabpanel">
+              <div class="spec-header">
+                <h3 class="spec-title">Dual Brushless Planetary Drive</h3>
+                <span class="spec-code">SUB-SYS // DRV-03</span>
+              </div>
+              <p class="spec-desc">
+                Custom high-reduction all-metal planetary gearboxes driven by sensored brushless outrunners. Custom vulcanized TPU tread wheels for instant traction on NRL steel floors.
+              </p>
+              <div class="spec-metrics-list">
+                <div class="metric-row">
+                  <span class="metric-name">Top Speed</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 82%;"></div>
+                  </div>
+                  <span class="metric-num">20 FT/S</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Total Push Force</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 90%;"></div>
+                  </div>
+                  <span class="metric-num">45 LBF</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Response Time</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 96%;"></div>
+                  </div>
+                  <span class="metric-num">&lt; 15 MS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 4: Avionics -->
+            <div class="tab-pane" id="tab-avionics" role="tabpanel">
+              <div class="spec-header">
+                <h3 class="spec-title">Telemetry & Power Distribution</h3>
+                <span class="spec-code">SUB-SYS // AVX-04</span>
+              </div>
+              <p class="spec-desc">
+                Custom high-current power distribution PCB with solid-state master switch, live voltage / current monitoring, and dynamic gyro stabilization to counter weapon gyroscopic precession.
+              </p>
+              <div class="spec-metrics-list">
+                <div class="metric-row">
+                  <span class="metric-name">Battery Config</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 90%;"></div>
+                  </div>
+                  <span class="metric-num">4S 2200mAh 120C</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Peak Current</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 88%;"></div>
+                  </div>
+                  <span class="metric-num">180A BURST</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-name">Signal Protocol</span>
+                  <div class="metric-bar-container">
+                    <div class="metric-bar" style="width: 98%;"></div>
+                  </div>
+                  <span class="metric-num">CRSF / DSHOT600</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Features Quick Grid -->
+            <div class="robot-feature-cards">
+              <div class="feature-mini-card">
+                <span class="mini-icon">⚡</span>
+                <span class="mini-title">Invertible Drive</span>
+                <span class="mini-sub">Runs flipped upside down</span>
+              </div>
+              <div class="feature-mini-card">
+                <span class="mini-icon">🛡️</span>
+                <span class="mini-title">Modular Wedges</span>
+                <span class="mini-sub">Quick-swap armor config</span>
+              </div>
+              <div class="feature-mini-card">
+                <span class="mini-icon">🛰️</span>
+                <span class="mini-title">Live Telemetry</span>
+                <span class="mini-sub">Real-time pit telemetry</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- EXTRA TECH-Y SECTION: NRL COMPETITION & ROADMAP -->
+    <section id="specs" class="section roadmap-section" data-section="specs">
+      <div class="container">
+        
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_03]</span>
+          <span class="tag-title">NRL CAMPAIGN & MILESTONES</span>
+        </div>
+
+        <div class="section-heading-wrap reveal">
+          <h2 class="section-title">ENGINEERING ROADMAP</h2>
+          <p class="section-subtitle">
+            From initial CAD simulation to the NRL National Championship Arena.
+          </p>
+        </div>
+
+        <div class="roadmap-timeline">
+          <div class="timeline-step done reveal">
+            <div class="step-badge">01</div>
+            <div class="step-card">
+              <span class="step-tag status-complete">PHASE COMPLETE</span>
+              <h4 class="step-title">CAD Modeling & FEA Stress Testing</h4>
+              <p class="step-desc">Finite Element Analysis on weapon disc impact load, chassis stress distribution, and center-of-mass balance.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step done reveal">
+            <div class="step-badge">02</div>
+            <div class="step-card">
+              <span class="step-tag status-complete">PHASE COMPLETE</span>
+              <h4 class="step-title">CNC Milling & Waterjet Fabrication</h4>
+              <p class="step-desc">Precision multi-axis machining of 7075-T6 unibody and abrasive waterjet cutting of Hardox 500 armor.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step active reveal">
+            <div class="step-badge">03</div>
+            <div class="step-card">
+              <span class="step-tag status-current">IN PROGRESS</span>
+              <h4 class="step-title">ESC Tuning & High-RPM Spin Cage Tests</h4>
+              <p class="step-desc">Dynamometer bench tests, spin-up velocity logging, and weapon drive belt tension optimization in safety testing box.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step upcoming reveal">
+            <div class="step-badge">04</div>
+            <div class="step-card">
+              <span class="step-tag status-upcoming">UPCOMING</span>
+              <h4 class="step-title">NRL National Championship 2026</h4>
+              <p class="step-desc">Entering the battle arena against top collegiate and high school combat robotics teams nationwide.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MEET THE TEAM & MENTOR SECTION -->
+    <section id="meet-team" class="section team-section" data-section="meet-team">
+      <div class="container">
+        
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_04]</span>
+          <span class="tag-title">CREW & ADVISORY</span>
+        </div>
+
+        <div class="section-heading-wrap reveal">
+          <h2 class="section-title">MEET THE TEAM</h2>
+          <p class="section-subtitle">
+            The engineers, designers, and strategist behind Team MGIS combat robotics program.
+          </p>
+        </div>
+
+        <!-- MENTOR SPOTLIGHT (1 Mentor) -->
+        <div class="mentor-spotlight reveal">
+          <div class="hud-corner hud-top-left"></div>
+          <div class="hud-corner hud-top-right"></div>
+          <div class="hud-corner hud-bottom-left"></div>
+          <div class="hud-corner hud-bottom-right"></div>
+
+          <div class="mentor-grid">
+            <div class="mentor-photo-wrap">
+              <div class="member-photo-frame">
+                <img 
+                  src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                  alt="Faculty Mentor Photo Placeholder"
+                  class="member-photo"
+                  loading="lazy"
+                />
+                <div class="photo-scan-grid"></div>
+              </div>
+              <div class="mentor-badge-callout">FACULTY MENTOR</div>
+            </div>
+
+            <div class="mentor-info">
+              <div class="member-header">
+                <div>
+                  <span class="member-role-tag mentor-tag">PROGRAM ADVISOR & MENTOR</span>
+                  <h3 class="member-name">Dr. Elena Vance</h3>
+                </div>
+                <span class="member-callsign">REF // ADV-001</span>
+              </div>
+              
+              <p class="member-bio">
+                Leading the engineering advisory for Team MGIS, Dr. Vance brings over a decade of mechanical design, 
+                advanced manufacturing, and robotics competition expertise. Guiding the team across finite element analysis, 
+                machining protocols, and safety compliance.
+              </p>
+
+              <div class="member-skills">
+                <span class="skill-pill">FEA Simulation</span>
+                <span class="skill-pill">Precision Machining</span>
+                <span class="skill-pill">Kinematic Analysis</span>
+                <span class="skill-pill">Safety Systems</span>
+              </div>
+
+              <div class="member-links">
+                <span class="member-link-tag">Advisory Dept.</span>
+                <span class="member-link-tag">NRL Safety Officer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 TEAM MEMBERS GRID -->
+        <div class="team-grid">
+
+          <!-- Member 1 -->
+          <div class="team-card reveal">
+            <div class="card-hud-border"></div>
+            <div class="member-photo-frame">
+              <img 
+                src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                alt="Alex Rivera - Team Captain & Mechanical Lead"
+                class="member-photo"
+                loading="lazy"
+              />
+              <span class="member-index-tag">01 // LEAD</span>
+            </div>
+            
+            <div class="member-card-content">
+              <span class="member-role-tag">TEAM CAPTAIN & CAD LEAD</span>
+              <h3 class="member-name">Alex Rivera</h3>
+              <p class="member-bio">
+                Head of overall bot architecture and 3D SolidWorks assembly. Manages tolerance stack-up and primary driver duties.
+              </p>
+              
+              <div class="member-skills">
+                <span class="skill-pill">SolidWorks</span>
+                <span class="skill-pill">Combat Piloting</span>
+                <span class="skill-pill">7075 Machining</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="team-card reveal">
+            <div class="card-hud-border"></div>
+            <div class="member-photo-frame">
+              <img 
+                src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                alt="Marcus Chen - Weapon Systems Specialist"
+                class="member-photo"
+                loading="lazy"
+              />
+              <span class="member-index-tag">02 // WEAPON</span>
+            </div>
+            
+            <div class="member-card-content">
+              <span class="member-role-tag">WEAPON SYSTEMS ENGINEER</span>
+              <h3 class="member-name">Marcus Chen</h3>
+              <p class="member-bio">
+                Specializes in kinetic disc balancing, bearing selection, belt-drive tensioning geometry, and heat treatment cycles.
+              </p>
+              
+              <div class="member-skills">
+                <span class="skill-pill">S7 Steel</span>
+                <span class="skill-pill">High RPM Dynamics</span>
+                <span class="skill-pill">FEA Impact</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="team-card reveal">
+            <div class="card-hud-border"></div>
+            <div class="member-photo-frame">
+              <img 
+                src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                alt="Sophia Patel - Electronics & Telemetry Lead"
+                class="member-photo"
+                loading="lazy"
+              />
+              <span class="member-index-tag">03 // AVIONICS</span>
+            </div>
+            
+            <div class="member-card-content">
+              <span class="member-role-tag">ELECTRONICS & FIRMWARE</span>
+              <h3 class="member-name">Sophia Patel</h3>
+              <p class="member-bio">
+                Architect of the high-current distribution board, ESC tuning parameters, FOC motor algorithms, and pit telemetry logging.
+              </p>
+              
+              <div class="member-skills">
+                <span class="skill-pill">PCB Design</span>
+                <span class="skill-pill">FOC / DShot</span>
+                <span class="skill-pill">Power Systems</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="team-card reveal">
+            <div class="card-hud-border"></div>
+            <div class="member-photo-frame">
+              <img 
+                src="https://www.thespruce.com/thmb/0onhGZLnbdIWdhGXPvcT4j5MMC8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bishopscap-GettyImages-470242914-b2941c8949f8415b9ff506a4896878e4.jpg" 
+                alt="Jordan Taylor - Fabrication & Strategy Lead"
+                class="member-photo"
+                loading="lazy"
+              />
+              <span class="member-index-tag">04 // TACTICS</span>
+            </div>
+            
+            <div class="member-card-content">
+              <span class="member-role-tag">FABRICATION & PIT CHIEF</span>
+              <h3 class="member-name">Jordan Taylor</h3>
+              <p class="member-bio">
+                Oversees fast-turnaround pit repairs, modular armor swaps between bouts, arena strategy analysis, and weight budget.
+              </p>
+              
+              <div class="member-skills">
+                <span class="skill-pill">Hardox Welding</span>
+                <span class="skill-pill">Pit Strategy</span>
+                <span class="skill-pill">Rapid Assembly</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER WITH LOGOS -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Top Grid with Partner & Sponsor Logos -->
+      <div class="footer-partners-wrap">
+        <h4 class="partners-heading">COMPETITION & TECHNICAL PARTNERS</h4>
+        <div class="partners-grid">
+          
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">NRL</span>
+              <span class="partner-type">National Robotics League</span>
+            </div>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">HAAS CNC</span>
+              <span class="partner-type">Precision Machining</span>
+            </div>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">SOLIDWORKS</span>
+              <span class="partner-type">CAD & Simulation</span>
+            </div>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">MAXON</span>
+              <span class="partner-type">Drive Systems</span>
+            </div>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">HARDOX</span>
+              <span class="partner-type">Wear Plate Armor</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Footer Columns -->
+      <div class="footer-main-grid">
+        
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <span class="symbol-bracket">[</span>
+            <span class="symbol-core">MGIS</span>
+            <span class="symbol-bracket">]</span>
+            <span class="footer-brand-title">TEAM MGIS</span>
+          </div>
+          <p class="footer-desc">
+            National Robotics League (NRL) Combat Robotics Engineering Division. Designing, building, and battling high-performance machines.
+          </p>
+          <div class="footer-status">
+            <span class="pulse-indicator"></span>
+            <span>STATUS: 2026 SEASON READY</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">NAVIGATION</h5>
+          <ul class="footer-links">
+            <li><a href="#who-we-are">Who We Are</a></li>
+            <li><a href="#about-robot">Robot Blueprint</a></li>
+            <li><a href="#specs">Telemetry & Specs</a></li>
+            <li><a href="#meet-team">Team & Mentor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">SPECIFICATIONS</h5>
+          <ul class="footer-links">
+            <li><a href="#about-robot">15lb Combat Class</a></li>
+            <li><a href="#about-robot">12,000 RPM Kinetic Disc</a></li>
+            <li><a href="#about-robot">7075-T6 Unibody Frame</a></li>
+            <li><a href="#about-robot">4S LiPo Power Array</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="footer-col-title">CONNECT</h5>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="GitHub">GIT</a>
+            <a href="#" class="social-btn" aria-label="YouTube">YT</a>
+            <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">IN</a>
+          </div>
+          <p class="footer-copy-text">Inquiries: team.mgis@robotics.nrl</p>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <p>© 2026 Team MGIS Robotics. All rights reserved. Built for NRL Combat Robotics.</p>
+        <p class="footer-build">BUILD: v4.8.2 // KINETIC-BLUE-RELEASE</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
