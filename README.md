@@ -15,3 +15,5 @@ This is the website for team MGIS in the NRL competition.
 
 <!--  A section (rest part won't be visible unless you scroll) with scroll resistance, and cool scroll animation that opens into the next section.  -->
 <!--  Meet the team -->
+
+This is a test by vraj to test git config
