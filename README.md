@@ -2,6 +2,8 @@
 
 This is the website for team MGIS in the NRL competition.
 
+[Website deploy link](https://vrajshah2902-design.github.io/NRL_Team_MGIS_Website/)
+
 
 [//]: # (WEBSITE STRUCTURE)
 <!--  A section (rest part won't be visible unless you scroll) with scroll resistance, and cool scroll animation that opens into the next section.  -->
