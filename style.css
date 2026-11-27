@@ -2288,6 +2288,18 @@ a {
   text-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
 }
 
+.side-score {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+.side-score.them-score {
+  text-align: right;
+}
+
 .our-tag {
   display: inline-block;
   margin-left: 0.45rem;

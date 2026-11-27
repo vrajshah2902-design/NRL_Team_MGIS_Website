@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | Team MGIS - NRL Combat Robotics</title>
+  <meta name="description" content="The requested sector was not found in the Team MGIS NRL website archive.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@400;600;700;800;900&family=Tiny5&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Background Animated Cyber Grid & Canvas -->
+  <div class="tech-canvas-background">
+    <canvas id="tech-particles"></canvas>
+    <div class="tech-grid-overlay"></div>
+    <div class="tech-glow tech-glow-top"></div>
+    <div class="tech-glow tech-glow-bottom"></div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header id="main-header" class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" aria-label="Team MGIS Home">
+        <div class="logo-symbol">
+          <span class="symbol-bracket">[</span>
+          <span class="symbol-core">MGIS</span>
+          <span class="symbol-bracket">]</span>
+        </div>
+        <div class="logo-meta">
+          <span class="logo-title">TEAM MGIS</span>
+          <span class="logo-sub">NRL COMBAT ROBOTICS</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html#who-we-are" class="nav-link"><span class="nav-num">01.</span> Who We Are</a></li>
+          <li><a href="index.html#about-robot" class="nav-link"><span class="nav-num">02.</span> The Robot</a></li>
+          <li><a href="index.html#specs" class="nav-link"><span class="nav-num">03.</span> Telemetry</a></li>
+          <li><a href="index.html#meet-team" class="nav-link"><span class="nav-num">04.</span> Team & Mentor</a></li>
+          <li><a href="matches.html" class="nav-link"><span class="nav-num">05.</span> Matches</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span class="status-text">SYS: ONLINE</span>
+        </div>
+        <a href="index.html#about-robot" class="btn btn-sm btn-primary">Inspect Bot</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html#who-we-are" class="mobile-nav-link">01. Who We Are</a></li>
+        <li><a href="index.html#about-robot" class="mobile-nav-link">02. The Robot</a></li>
+        <li><a href="index.html#specs" class="mobile-nav-link">03. Telemetry & Specs</a></li>
+        <li><a href="index.html#meet-team" class="mobile-nav-link">04. Meet The Team</a></li>
+        <li><a href="matches.html" class="mobile-nav-link">05. Match Scores</a></li>
+        <li><a href="index.html#about-robot" class="btn btn-primary btn-block">Inspect Robot</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-wrapper">
+
+    <!-- 404 ERROR SECTION -->
+    <section class="error-section" aria-label="Not Found">
+      <div class="container">
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_404]</span>
+          <span class="tag-title">ARENA BREACH</span>
+        </div>
+
+        <div class="error-layout">
+          <div class="error-main reveal">
+            <div class="missing-path" id="missing-path">/unknown-sector</div>
+            <h1 class="error-code">404</h1>
+            <p class="section-subtitle">
+              Requested sector not found in the arena archive. Verify your coordinates and re-establish the link.
+            </p>
+            <div class="error-hud hud-panel">
+              <h3 class="intel-title">RE-ESTABLISH LINK</h3>
+              <ul class="footer-links">
+                <li><a href="index.html">Return to HQ</a></li>
+                <li><a href="matches.html">Match Scores</a></li>
+                <li><a href="index.html#about-robot">Robot Blueprint</a></li>
+                <li><a href="index.html#meet-team">Team & Mentor</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="error-aside reveal">
+            <div class="error-hud hud-panel">
+              <h3 class="intel-title">SYSTEM DIAGNOSTIC</h3>
+              <p class="text-dim">
+                MGIS core kernel online. All telemetry nominal — the targeted path simply does not exist in this deployment.
+              </p>
+              <div class="footer-status">
+                <span class="pulse-indicator"></span>
+                <span>CORE: ONLINE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer error-footer">
+    <div class="container">
+      <div class="footer-partners-wrap">
+        <h4 class="partners-heading">COMPETITION & TECHNICAL PARTNERS</h4>
+        <div class="partners-grid">
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">NRL</span>
+              <span class="partner-type">National Robotics League</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">MGIS</span>
+              <span class="partner-type">Mahatma Gandhi International School</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">ONSHAPE</span>
+              <span class="partner-type">CAD & Simulation</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">ZED</span>
+              <span class="partner-type">The best IDE</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">GITHUB</span>
+              <span class="partner-type">Code hosting and stuff</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-main-grid">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <span class="symbol-bracket">[</span>
+            <span class="symbol-core">MGIS</span>
+            <span class="symbol-bracket">]</span>
+            <span class="footer-brand-title">TEAM MGIS</span>
+          </div>
+          <p class="footer-desc">
+            National Robotics League (NRL) Combat Robotics Engineering Division. Designing, building, and battling high-performance machines.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">NAVIGATION</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Who We Are</a></li>
+            <li><a href="index.html#about-robot">Robot Blueprint</a></li>
+            <li><a href="matches.html">Match Scores</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© 2026 Team MGIS Robotics. All rights reserved. Built for NRL Combat Robotics.</p>
+        <p class="footer-build">BUILD: v4.8.2 // KINETIC-BLUE-RELEASE</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

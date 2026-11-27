@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Scores | Team MGIS - NRL Combat Robotics</title>
+  <meta name="description" content="Team MGIS NRL match scores, season record, win rate and bout-by-bout results telemetry.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@400;600;700;800;900&family=Tiny5&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div id="scroll-progress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Background Animated Cyber Grid & Canvas -->
+  <div class="tech-canvas-background">
+    <canvas id="tech-particles"></canvas>
+    <div class="tech-grid-overlay"></div>
+    <div class="tech-glow tech-glow-top"></div>
+    <div class="tech-glow tech-glow-bottom"></div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header id="main-header" class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" aria-label="Team MGIS Home">
+        <div class="logo-symbol">
+          <span class="symbol-bracket">[</span>
+          <span class="symbol-core">MGIS</span>
+          <span class="symbol-bracket">]</span>
+        </div>
+        <div class="logo-meta">
+          <span class="logo-title">TEAM MGIS</span>
+          <span class="logo-sub">NRL COMBAT ROBOTICS</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html#who-we-are" class="nav-link"><span class="nav-num">01.</span> Who We Are</a></li>
+          <li><a href="index.html#about-robot" class="nav-link"><span class="nav-num">02.</span> The Robot</a></li>
+          <li><a href="index.html#specs" class="nav-link"><span class="nav-num">03.</span> Telemetry</a></li>
+          <li><a href="index.html#meet-team" class="nav-link"><span class="nav-num">04.</span> Team & Mentor</a></li>
+          <li><a href="matches.html" class="nav-link active" aria-current="page"><span class="nav-num">05.</span> Matches</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span class="status-text">SYS: ONLINE</span>
+        </div>
+        <a href="index.html#about-robot" class="btn btn-sm btn-primary">Inspect Bot</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html#who-we-are" class="mobile-nav-link">01. Who We Are</a></li>
+        <li><a href="index.html#about-robot" class="mobile-nav-link">02. The Robot</a></li>
+        <li><a href="index.html#specs" class="mobile-nav-link">03. Telemetry & Specs</a></li>
+        <li><a href="index.html#meet-team" class="mobile-nav-link">04. Meet The Team</a></li>
+        <li><a href="matches.html" class="mobile-nav-link" aria-current="page">05. Match Scores</a></li>
+        <li><a href="index.html#about-robot" class="btn btn-primary btn-block">Inspect Robot</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-wrapper">
+
+    <!-- SEASON SCOREBOARD -->
+    <section class="section page-hero" aria-label="Season scoreboard">
+      <div class="container">
+
+        <div class="section-tag reveal">
+          <span class="tag-index">[SEC_05]</span>
+          <span class="tag-title">SEASON SCOREBOARD</span>
+        </div>
+
+        <div class="section-heading-wrap reveal">
+          <h2 class="section-title">MATCH SCORES</h2>
+          <p class="section-subtitle">
+            Bout-by-bout results for Team MGIS in the NRL combat robotics arena, computed live from matches.csv.
+          </p>
+        </div>
+
+        <div class="season-layout">
+          <!-- LEFT COLUMN: season summary -->
+          <div class="season-summary">
+            <div class="ring-block reveal">
+              <div class="win-ring-wrap">
+                <svg class="win-ring" viewBox="0 0 168 168">
+                  <circle class="ring-track" cx="84" cy="84" r="69"></circle>
+                  <circle class="ring-win" cx="84" cy="84" r="69" transform="rotate(-90 84 84)" style="stroke-dasharray: 0 400"></circle>
+                  <circle class="ring-loss" cx="84" cy="84" r="69" transform="rotate(-90 84 84)" style="stroke-dasharray: 0 400"></circle>
+                </svg>
+                <div class="win-ring-center">
+                  <div class="win-ring-value" id="win-rate-value">--%</div>
+                  <div class="win-ring-caption">WIN RATE</div>
+                </div>
+              </div>
+              <div class="record-stats">
+                <div>
+                  <div class="win-ring-value" id="stat-wins">0</div>
+                  <div class="win-ring-caption">WINS</div>
+                </div>
+                <div>
+                  <div class="win-ring-value" id="stat-losses">0</div>
+                  <div class="win-ring-caption">LOSSES</div>
+                </div>
+                <div>
+                  <div class="win-ring-value" id="stat-live">0</div>
+                  <div class="win-ring-caption">IN PROGRESS</div>
+                </div>
+                <div>
+                  <div class="win-ring-value" id="stat-queued">0</div>
+                  <div class="win-ring-caption">NOT BEGUN</div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-panel reveal">
+              <h3 class="intel-title">RECORD OVER SEASON</h3>
+              <div class="record-chart" id="record-chart">
+                <svg id="record-svg" viewBox="0 0 700 220" aria-label="Cumulative win rate by match" role="img"></svg>
+                <div class="chart-legend">
+                  <span><span class="legend-swatch swatch-win"></span>Won</span>
+                  <span><span class="legend-swatch swatch-loss"></span>Lost</span>
+                </div>
+                <div class="chart-readout" id="chart-readout">Loading match telemetry...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: head-to-head, filters & match log -->
+          <div>
+            <div class="intel-panel reveal">
+              <h3 class="intel-title">HEAD-TO-HEAD INTEL</h3>
+              <div class="intel-grid" id="intel-grid"></div>
+            </div>
+
+            <div class="load-error" id="csv-load-error" hidden>
+              Uplink failed: could not load matches.csv. Serve this site over HTTP (file:// blocks local file fetching).
+            </div>
+
+            <div class="match-toolbar reveal">
+              <div class="tech-tab-bar">
+                <button class="match-filter-btn active" data-filter="all">All <span class="filter-count" id="filter-count-all">0</span></button>
+                <button class="match-filter-btn" data-filter="won">Won <span class="filter-count" id="filter-count-won">0</span></button>
+                <button class="match-filter-btn" data-filter="lost">Lost <span class="filter-count" id="filter-count-lost">0</span></button>
+                <button class="match-filter-btn" data-filter="live">Live <span class="filter-count" id="filter-count-live">0</span></button>
+                <button class="match-filter-btn" data-filter="queued">Queued <span class="filter-count" id="filter-count-queued">0</span></button>
+              </div>
+              <div class="match-search">
+                <input type="search" id="match-search" placeholder="Search opponent or ally..." aria-label="Search matches">
+              </div>
+            </div>
+
+            <div class="form-panel reveal">
+              <span class="form-label">RECENT FORM</span>
+              <div class="form-strip" id="form-strip"></div>
+            </div>
+
+            <ul class="match-log" id="match-log"></ul>
+            <div class="match-empty" id="match-empty" hidden>No matches match your filter.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-partners-wrap">
+        <h4 class="partners-heading">COMPETITION & TECHNICAL PARTNERS</h4>
+        <div class="partners-grid">
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">NRL</span>
+              <span class="partner-type">National Robotics League</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">MGIS</span>
+              <span class="partner-type">Mahatma Gandhi International School</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">ONSHAPE</span>
+              <span class="partner-type">CAD & Simulation</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">ZED</span>
+              <span class="partner-type">The best IDE</span>
+            </div>
+          </div>
+          <div class="partner-logo-box">
+            <div class="partner-svg-wrap">
+              <span class="partner-name">GITHUB</span>
+              <span class="partner-type">Code hosting and stuff</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-main-grid">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <span class="symbol-bracket">[</span>
+            <span class="symbol-core">MGIS</span>
+            <span class="symbol-bracket">]</span>
+            <span class="footer-brand-title">TEAM MGIS</span>
+          </div>
+          <p class="footer-desc">
+            National Robotics League (NRL) Combat Robotics Engineering Division. Designing, building, and battling high-performance machines.
+          </p>
+          <div class="footer-status">
+            <span class="pulse-indicator"></span>
+            <span>STATUS: 2026 SEASON READY</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">NAVIGATION</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#who-we-are">Who We Are</a></li>
+            <li><a href="index.html#about-robot">Robot Blueprint</a></li>
+            <li><a href="index.html#specs">Telemetry & Specs</a></li>
+            <li><a href="index.html#meet-team">Team & Mentor</a></li>
+            <li><a href="matches.html" aria-current="page">Match Scores</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">SPECIFICATIONS</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#about-robot">15lb Combat Class</a></li>
+            <li><a href="index.html#about-robot">12,000 RPM Kinetic Disc</a></li>
+            <li><a href="index.html#about-robot">7075-T6 Unibody Frame</a></li>
+            <li><a href="index.html#about-robot">4S LiPo Power Array</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">CONNECT</h5>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Instagram">Instagram</a>
+          </div>
+          <p class="footer-copy-text">Inquiries: team-mgis.nrl@proton.me</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© 2026 Team MGIS Robotics. All rights reserved. Built for NRL Combat Robotics.</p>
+        <p class="footer-build">BUILD: v4.8.2 // KINETIC-BLUE-RELEASE</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
