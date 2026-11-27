@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 7. LIGHTWEIGHT TECH PARTICLE CANVAS
   initTechCanvas();
+
+  // 8. MATCH SCORES (matches.html only)
+  initMatchScores();
+
+  // 9. 404 REQUEST PATH
+  initMissingPath();
 });
 
 /* ========================================================
