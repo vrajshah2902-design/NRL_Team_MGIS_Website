@@ -1,2 +1,3 @@
 match_no,team,team_mate,opp_1,opp_2,status,final_score_us,final_score_opp
-1,Team MGIS,Technoblade,Cygnitek,CA,In progress,0,0
+1,Team MGIS,Technoblade,Cygnitek,CA,Lost,27,30
+1,Team MGIS,Gamma,Cygnitek,Technoblade,In progress,0,0
